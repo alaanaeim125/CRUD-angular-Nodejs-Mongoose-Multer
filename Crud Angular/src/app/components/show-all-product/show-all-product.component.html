@@ -1,0 +1,55 @@
+
+<div class="container">
+
+    <h5 class='alert alert-danger alert-sm text-center'> All Products </h5>
+
+    <table class="table table-sm text-center">
+        <thead>
+          <tr>
+            <th>
+              <button class=" btn btn-danger btn-block" title="add New Product" (click)='addProduct()'>
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+              </button> 
+            </th>
+          </tr>
+          <tr class='alert alert-success alert-sm'>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let prd of products; let i = index'>
+            <td>{{ i + 1 }}</td>
+            <td>
+                <img width='60px' height='60px' src="http://localhost:3030/{{prd.Image}}">
+            </td>
+            <td>{{ prd.Name }}</td>
+            <td>{{ prd.Brand }}</td>
+            <td>{{ prd.Price }}</td>
+            <td>{{ prd.Quantity }}</td>
+            <td>
+                <button class='btn btn-primary btn-sm' title="View Product" (click)='viewProduct(prd._id)'>
+                    <i class="fa fa-eye"></i>
+                </button>
+            </td>
+            <td>
+                <button class='btn btn-primary btn-sm' title="Edit Product" (click)='editProduct(prd._id)'>
+                    <i class="fa fa-edit"></i>
+                </button>
+            </td>
+            <td>
+                <button class='btn btn-primary btn-sm' title="Delete Product" (click)='deleteProduct(prd._id)'>
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,0 +1,106 @@
+<h1 class='alert alert-success alert-sm text-center'>Add New Product</h1>
+
+<div class="container">
+    <div class='row'>
+        <div class='col-6'> 
+            <form #form='ngForm' (ngSubmit)='addNewProduct(form)'>
+                <div class="form-group">
+                    <input type="text" 
+                        class="form-control" 
+                        id="Name" 
+                        name="Name" 
+                        #Name = 'ngModel'
+                        ngModel
+                        aria-describedby="Name">
+                    <small id="Name" class="form-text text-muted">Please Enter Correct Product name.</small>
+                </div>
+
+                <div class="form-group">
+                    <select class="custom-select" name='Brand' #Brand='ngModel' ngModel>
+                        <option *ngFor='let brand of brands'> {{ brand }}</option>
+                    </select>
+                    <small id="Brand" class="form-text text-muted">Please Select Correct product Brand.</small>
+                </div>
+
+                <div class="form-group">
+                    <input type="number" 
+                        min="1"
+                        class="form-control" 
+                        id="Price" 
+                        name="Price" 
+                        #Price = 'ngModel'
+                        ngModel  
+                        aria-describedby="Price">
+                    <small id="Price" class="form-text text-muted">Please Enter Price more than 0.</small>
+                </div>
+
+                <div class="form-group">
+                    <input type="number" 
+                        min="1"
+                        class="form-control" 
+                        id="Quantity" 
+                        name="Quantity" 
+                        #Quantity = 'ngModel'
+                        ngModel   
+                        aria-describedby="Quantity">
+                    <small id="Quantity" class="form-text text-muted">Please Enter Quantity more than 0.</small>
+                </div> 
+                
+                <!-- <div class="form-group">
+                    <input type="text" 
+                        class="form-control" 
+                        id="Image" 
+                        name="Image" 
+                        #Image = 'ngModel'
+                        ngModel   
+                        aria-describedby="Image">
+                    <small id="Image" class="form-text text-muted">Please Enter Correct Image URL.</small>
+                </div>  -->
+
+
+                <!---------------------------------------------------------------------------------->
+
+                <div class="form-group">
+                    <input type='button' 
+                           class='btn btn-primary btn-block' 
+                           value='Select Your Profile image' 
+                           onclick="document.getElementById('Image').click()"
+                    />
+    
+                    <input type="file" 
+                          class="form-control imageUpload" 
+                           ng2FileSelect 
+                           [uploader]="uploader"
+                           id="Image"
+                           name="Image"
+                           ngModel
+                           #Image = "ngModel"
+                           required
+                    />
+                    <div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar"
+                                [ngStyle]="{ 'width': uploader.progress + '%' }">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <small id="Imagec" class="form-text text-muted">We'll never share your Image with anyone else.</small>
+                </div>
+
+                <!---------------------------------------------------------------------------------->
+
+                <button type="submit" 
+                        class="btn btn-primary btn-block btn-sm" 
+                        (click)="uploader.uploadAll()"
+                        [disabled]="!form.valid || !uploader.getNotUploadedItems().length"
+                >
+                        Save Product
+                </button>
+
+            </form>
+        </div>
+
+        <div class='col-6'></div>
+    </div>
+</div>

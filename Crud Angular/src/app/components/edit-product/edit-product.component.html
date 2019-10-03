@@ -1,0 +1,113 @@
+
+<h1 class='alert alert-success alert-sm text-center'>Update Product</h1>
+
+<div class="container">
+    <div class='row'>
+        <div class='col-6'>
+            
+    <form #form='ngForm' (ngSubmit)='UpdateProduct(form)'>
+        <div class="form-group">
+            <input type="text" 
+                [(ngModel)]="selectedProduct.Name"
+                class="form-control" 
+                id="Name" 
+                name="Name" 
+                #Name = 'ngModel'
+                ngModel
+                aria-describedby="Name">
+            <small id="Name" class="form-text text-muted">Please Enter Correct Product name.</small>
+        </div>
+
+        <div class="form-group">
+            <select class="custom-select" [(ngModel)]="selectedProduct.Brand" name='Brand' #Brand='ngModel' ngModel>
+                <option *ngFor='let brand of brands'> {{ brand }}</option>
+            </select>
+            <small id="Brand" class="form-text text-muted">Please Select Correct product Brand.</small>
+        </div>
+
+        <div class="form-group">
+            <input type="number" 
+                [(ngModel)]="selectedProduct.Price"
+                min="1"
+                class="form-control" 
+                id="Price" 
+                name="Price" 
+                #Price = 'ngModel'
+                ngModel  
+                aria-describedby="Price">
+            <small id="Price" class="form-text text-muted">Please Enter Price more than 0.</small>
+        </div>
+
+        <div class="form-group">
+            <input type="number" 
+                [(ngModel)]="selectedProduct.Quantity"
+                min="1"
+                class="form-control" 
+                id="Quantity" 
+                name="Quantity" 
+                #Quantity = 'ngModel'
+                ngModel   
+                aria-describedby="Quantity">
+            <small id="Quantity" class="form-text text-muted">Please Enter Quantity more than 0.</small>
+        </div> 
+        
+        <div class="form-group imageName">
+            <input type="text" 
+                [(ngModel)]="selectedProduct.Image"
+                class="form-control" 
+                id="ImageName" 
+                name="ImageName" 
+                #ImageName = 'ngModel'
+                ngModel   
+                aria-describedby="ImageName">
+            <small id="ImageName" class="form-text text-muted">Your Image Name.</small>
+        </div> 
+
+        <!--------------------------------------------------------------------------------->
+
+        <div class="form-group">
+                <input type='button' 
+                       class='btn btn-primary btn-block' 
+                       value='Change Your Profile image ..... ' 
+                       onclick="document.getElementById('Image').click()"
+                />
+
+                <input type="file" 
+                      class="form-control imageUpload" 
+                       ng2FileSelect 
+                       [uploader]="uploader"
+                       id="Image"
+                       name="Image"
+                       ngModel
+                       #Image = "ngModel"
+                       required
+                />
+                <div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
+                            [ngStyle]="{ 'width': uploader.progress + '%' }">
+                        </div>
+                    </div>
+                </div>
+
+                <small id="Imagec" class="form-text text-muted">We'll never share your Image with anyone else.</small>
+            </div>
+
+
+        <!--------------------------------------------------------------------------------->
+
+        <button type="submit" 
+                class="btn btn-primary btn-block btn-sm" 
+                (click)="uploader.uploadAll()"
+        >
+                Update Product
+        </button>
+
+    </form>
+        </div>
+
+        <div class='col-6'>
+            <img class="img-thumbnail img-responsive" width="400px" height="400px" [src]="imageURL">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<h1 class='text-center alert alert-success alert-sm'>Product Details</h1>
+
+<div class="container singlePage">
+    <div class="row">
+        <div class="col-1"></div>
+
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                  <div class="alert alert-danger alert-sm alrtx">
+                    <p class='prd'>Product Name</p> 
+                    <input  type="text" 
+                            [value]="selectedPrd.Name" 
+                            class="form-control"
+                            readonly
+                    />
+                  </div>
+                </div>
+
+        
+                <div class="form-group">
+                  <div class="alert alert-danger alert-sm alrtx">
+                        <p class='prd'>Product Brand</p>
+                    <input [value]="selectedPrd.Brand" 
+                           type="text" 
+                           class="form-control" 
+                           readonly
+                    />
+                  </div>
+                </div>
+        
+                <div class="form-group">
+                  <div class="alert alert-danger alert-sm alrtx">
+                    <p class='prd'>Product Price</p>
+
+                    <div class="input-group mr-sm-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                      </div>
+                      <input type="number" class="form-control" [value]="selectedPrd.Price" readonly>
+                    </div>
+                  </div>
+                </div>
+        
+        
+                <div class="form-group">
+                  <div class="alert alert-danger alert-sm alrtx">
+                        <p class='prd'>Product Quantity</p>
+                    <input [value]="selectedPrd.Quantity" 
+                           type="number" 
+                           class="form-control" 
+                           readonly
+                    />
+
+                  </div>
+                </div>
+        
+                <button type="button" 
+                        class="btn btn-danger btn-sm btn-block" 
+                        (click)="BackBack()">
+                        Back
+                </button>
+
+              </form>
+        </div>
+
+        <div class="col-3">
+            <img *ngIf="selectedPrd" class="img-thumbnail img-fluid uk-img-preserve image" [src]="ImageUrl" />
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
